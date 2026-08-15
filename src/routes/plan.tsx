@@ -26,7 +26,7 @@ export const Route = createFileRoute("/plan")({
       },
     ],
   }),
-  component: PlanPage;
+  component: PlanPage,
 });
 
 type PlanState = {
