@@ -122,7 +122,7 @@ function RealityCheckPage() {
                   max={10}
                   step={1}
                   value={[intensity]}
-                  onValueChange={([v]) => setIntensity(v)}
+                  onValueChange={(v) => setIntensity(v[0] ?? 7)}
                 />
               </div>
             </div>
@@ -225,7 +225,7 @@ function splitSections(text: string) {
   if (indices.length === 0) return [{ heading: "Reality check", body: text }];
   indices.sort((a, b) => a.i - b.i);
   indices.forEach((cur, idx) => {
-    const end = idx + 1 < indices.length ? indices[idx + 1].i : text.length;
+    const end = idx + 1 < indices.length ? (indices[idx + 1]?.i ?? text.length) : text.length;
     const body = text
       .slice(cur.i + cur.h.length, end)
       .replace(/^[\s:]+/, "")
